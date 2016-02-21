@@ -1,0 +1,34 @@
+sentence    :=  aux-sg np-sg-nominative vp-pl | aux-pl np-pl-nominative vp-pl | np-sg-nominative vp-sg | np-pl-nominative vp-pl | vp-pl;
+
+
+np-pl-nominative  := pl-pro-nominative |  pl-nominative | det pl-nominal | pl-nominal ;
+
+
+np-sg-nominative  := sg-pro-nominative | sg-nominative | det sg-nominal | sg-nominal ;
+
+sg-nominal  := sg-noun | sg-nominal sg-noun| sg-nominal pp | sg-nominal pp pp | sg-nominal sg-rel-clause;
+
+
+pl-nominal  := pl-noun | pl-nominal pl-noun | pl-nominal pp | pl-nominal pp pp | pl-nominal pl-rel-clause;
+
+np-accusative := np-sg-accusative | np-pl-accusative ;
+
+
+np-pl-accusative  := pl-pro-accusative | pl-accusative | pl-nominal | det pl-nominal | pl-accusative det pl-noun |pl-accusative det sg-noun ;
+
+np-sg-accusative  := sg-pro-accusative | sg-accusative |sg-nominal | det sg-nominal| sg-accusative det sg-noun |sg-accusative det pl-noun;
+
+
+
+
+vp-pl := pl-verb |  pl-verb np-accusative |pl-verb np-accusative np-accusative| pl-verb np-accusative pp | pl-verb pp | pl-verb inf-maker vp-pl | pl-verb np-accusative np-accusative pp ;
+
+
+vp-sg := sg-verb |  sg-verb np-accusative | sg-verb np-accusative np-accusative|sg-verb np-accusative pp | sg-verb pp | sg-verb inf-maker vp-pl| sg-verb np-accusative np-accusative pp;
+
+pl-rel-clause  :=  rel-pro vp-pl;
+
+sg-rel-clause  :=  rel-pro vp-sg;
+
+pp          :=  prep accusative ;
+

@@ -1,6 +1,6 @@
 (a) Show the airlines with flights to Boston
 
-[S[VP [Verb “Show”]
+[S [VP [Verb “Show”]
       [NP [Det “the”]
           [Nominal [Nominal [Noun “airlines”]]
                    [PP [Preposition “with”]
@@ -13,12 +13,12 @@
 (b) Show the airlines that fly to Boston
 
 [S [VP [Verb “Show”]
-       [NP [Nominal [Det “the”]
-                    [Nominal [Noun “airlines”]]]
-           [RelClause [Rel-pro “that”]
-                      [VP [Verb “fly”]
-                          [PP [Preposition “to”]
-                              [Nominal [Proper-Noun “Boston”]]]]]]]]
+       [NP [Det “the”]
+           [Nominal [Noun “airlines”]]]
+                    [RelClause [Rel-pro “that”]
+                               [VP [Verb “fly”]
+                                   [PP [Preposition “to”]
+                                       [Nominal [Proper-Noun “Boston”]]]]]]]]
 
 
 
