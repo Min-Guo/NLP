@@ -48,11 +48,13 @@ public class Tagger {
             line = reader.readLine();
             parseFirstLine(line);
             while ((line = reader.readLine()) != null) {
-                String[] splitString = line.split("\t");
-                currentTag = splitString[1];
-                setWordMap(splitString[0], currentTag);
-                setTagMap(preTag, currentTag);
-                preTag = currentTag;
+                if (line.length() > 0) {
+                    String[] splitString = line.split("\t");
+                    currentTag = splitString[1];
+                    setWordMap(splitString[0], currentTag);
+                    setTagMap(preTag, currentTag);
+                    preTag = currentTag;
+                }
             }
         }catch (IOException e) {
             System.out.println("Not found training set.");
