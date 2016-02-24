@@ -4,8 +4,10 @@ package HMM;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 public class Tagger {
     private static String preTag;
@@ -55,12 +57,65 @@ public class Tagger {
                     setTagMap(preTag, currentTag);
                     preTag = currentTag;
                 } else {
-                    setTagMap(".", "End");
+                    setTagMap(preTag, "End");
                     preTag = "Start";
                 }
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Not found training set.");
+        }
+    }
+
+    static double emitPro (String word, String tag, WordTag tags) {
+        return tags.getTagMap().get(tag) / tagMap.get(tag).getTotalCount();
+    }
+
+    static double transPro (String preTag, String currentTag) {
+        return tagMap.get(currentTag).getTagCount(preTag) / tagMap.get(preTag).getTotalCount();
+    }
+
+    static void calcProb (String word, PreWordTag preWordTag) {
+        WordTag tags = new WordTag();
+        if (tagMap.containsKey(word)) {
+            tags = wordMap.get(word);
+            List<PreTagInfo> preTagList = null;
+            for (Map.Entry<String, Integer> entry : tags.getTagMap().entrySet()) {
+                double maximumProb = 0.0;
+                PreTagInfo newTagInfo = new PreTagInfo();
+                String fromTag = null;
+                String curTag = entry.getKey();
+                for (PreTagInfo preTagInfo: preTagList) {
+                    double prob = Math.max(maximumProb, preTagInfo.getProb() * emitPro(word, curTag, tags) * transPro(preTagInfo.getTag(), curTag));
+                    if (maximumProb != prob) {
+                        maximumProb = prob;
+                        fromTag = preTagInfo.getTag();
+                    }
+                }
+                newTagInfo.setFromTag(fromTag);
+                newTagInfo.setProb(maximumProb);
+                newTagInfo.setTag(curTag);
+                preTagList.add(newTagInfo);
+            }
+        }
+    }
+
+    static void taggingWords (String testSet) throws IOException {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(testSet));
+            String line;
+            PreWordTag preWordTag = new PreWordTag();
+            preWordTag.setWord("");
+            preWordTag.addTag("Start");
+            while ((line = reader.readLine()) != null) {
+                if (line.length() > 0) {
+
+                } else {
+
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Not found test set.");
         }
     }
 
