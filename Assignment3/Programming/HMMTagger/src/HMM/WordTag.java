@@ -17,7 +17,11 @@ public class WordTag {
     }
 
     public Integer getWordTagCount (String tag) {
-        return tagMap.get(tag);
+        if (tagMap.containsKey(tag)) {
+            return tagMap.get(tag);
+        } else {
+            return 0;
+        }
     }
 
     public void setTagMap (String tag) {

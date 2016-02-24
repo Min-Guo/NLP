@@ -17,7 +17,11 @@ public class TagTag {
     }
 
     public Integer getTagCount (String tag) {
-        return tagMap.get(tag);
+        if (tagMap.containsKey(tag)) {
+            return tagMap.get(tag);
+        } else {
+            return 0;
+        }
     }
 
     public void setTagMap (String tag) {

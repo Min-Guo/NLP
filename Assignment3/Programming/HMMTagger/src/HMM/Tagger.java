@@ -14,6 +14,7 @@ public class Tagger {
     private static String currentTag;
     private static Map<String, WordTag> wordMap = new HashMap<>();
     private static Map<String, TagTag> tagMap = new HashMap<>();
+    private static Map<String, List<PreTagInfo>> optionalOutput = new HashMap<>();
 
     static void parseFirstLine (String firstLine) {
         String[] splitString = firstLine.split("\t");
@@ -74,12 +75,12 @@ public class Tagger {
         return tagMap.get(currentTag).getTagCount(preTag) / tagMap.get(preTag).getTotalCount();
     }
 
-    static void calcProb (String word, PreWordTag preWordTag) {
-        WordTag tags = new WordTag();
+    static void calcProb (String word) {
         if (tagMap.containsKey(word)) {
+            WordTag tags;
             tags = wordMap.get(word);
-            List<PreTagInfo> preTagList = null;
             for (Map.Entry<String, Integer> entry : tags.getTagMap().entrySet()) {
+                List<PreTagInfo> preTagList = null;
                 double maximumProb = 0.0;
                 PreTagInfo newTagInfo = new PreTagInfo();
                 String fromTag = null;
@@ -95,7 +96,10 @@ public class Tagger {
                 newTagInfo.setProb(maximumProb);
                 newTagInfo.setTag(curTag);
                 preTagList.add(newTagInfo);
+                optionalOutput.put(word, preTagList);
             }
+        } else {
+
         }
     }
 
@@ -103,9 +107,12 @@ public class Tagger {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(testSet));
             String line;
-            PreWordTag preWordTag = new PreWordTag();
-            preWordTag.setWord("");
-            preWordTag.addTag("Start");
+            PreTagInfo tagInfo = new PreTagInfo();
+            tagInfo.setTag("Start");
+            tagInfo.setProb(1.0);
+            List<PreTagInfo> intiTagInfo = new ArrayList<>();
+            intiTagInfo.add(tagInfo);
+            optionalOutput.put("", intiTagInfo);
             while ((line = reader.readLine()) != null) {
                 if (line.length() > 0) {
 
