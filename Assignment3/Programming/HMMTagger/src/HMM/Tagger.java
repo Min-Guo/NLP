@@ -48,12 +48,15 @@ public class Tagger {
             line = reader.readLine();
             parseFirstLine(line);
             while ((line = reader.readLine()) != null) {
-                if (line.length() > 0) {
+                if (line.length() > 0 ) {
                     String[] splitString = line.split("\t");
                     currentTag = splitString[1];
                     setWordMap(splitString[0], currentTag);
                     setTagMap(preTag, currentTag);
                     preTag = currentTag;
+                } else {
+                    setTagMap(".", "End");
+                    preTag = "Start";
                 }
             }
         }catch (IOException e) {
@@ -63,5 +66,6 @@ public class Tagger {
 
     public static void main (String[] args) throws IOException {
         parseCorpus(args[0]);
+        System.out.println("code");
     }
 }

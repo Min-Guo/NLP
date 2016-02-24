@@ -7,12 +7,14 @@ import java.util.TreeMap;
 
 public class TagTag {
     private Map<String, Integer> tagMap;
+    private int tagCount;
 
     public TagTag () {
         this.tagMap = new HashMap<>();
     }
 
     public void setTagMap (String tag) {
+        tagCount ++;
         if (tagMap.containsKey(tag)) {
             Integer count = tagMap.get(tag);
             tagMap.put(tag, count + 1);
