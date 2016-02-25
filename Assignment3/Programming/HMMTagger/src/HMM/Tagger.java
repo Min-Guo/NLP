@@ -160,6 +160,7 @@ public class Tagger {
                     pathInfo.setPathInfo(word, toTag);
                     path.push(pathInfo);
                     toTag = info.getFromTag();
+                    break;
                 }
             }
         }
@@ -168,26 +169,37 @@ public class Tagger {
             pathInfo = path.pop();
             System.out.println(pathInfo.getWord() + "\t" + pathInfo.getPath());
         }
-        System.out.println("End");
+    }
+
+    static List<TagInfo> intiPreTagList() {
+        TagInfo tagInfo = new TagInfo();
+        tagInfo.setTag("Start");
+        tagInfo.setProb(1.0);
+        List<TagInfo> intiTagInfo = new ArrayList<>();
+        intiTagInfo.add(tagInfo);
+        return intiTagInfo;
     }
 
     static void taggingWords (String testSet) throws IOException {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(testSet));
             String line;
-            TagInfo tagInfo = new TagInfo();
-            tagInfo.setTag("Start");
-            tagInfo.setProb(1.0);
-            List<TagInfo> intiTagInfo = new ArrayList<>();
-            intiTagInfo.add(tagInfo);
-            List<TagInfo> preTagList = intiTagInfo;
+//            TagInfo tagInfo = new TagInfo();
+//            tagInfo.setTag("Start");
+//            tagInfo.setProb(1.0);
+//            List<TagInfo> intiTagInfo = new ArrayList<>();
+//            intiTagInfo.add(tagInfo);
+//            List<TagInfo> preTagList = intiTagInfo;
+            List<TagInfo> preTagList = intiPreTagList();
             while ((line = reader.readLine()) != null) {
                 if (line.length() > 0) {
                     preTagList = calcProb(line, preTagList);
                 } else {
                     calcEndPro(preTagList);
                     tagPath();
+                    System.out.println("\n");
                     preTagList.clear();
+                    preTagList = intiPreTagList();
                 }
             }
 
