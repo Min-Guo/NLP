@@ -1,7 +1,7 @@
 package HMM;
 
 
-public class PreTagInfo {
+public class TagInfo {
     private String tag;
     private double prob;
     private String fromTag;
@@ -24,5 +24,8 @@ public class PreTagInfo {
 
     public void setTag (String tag) {
         this.tag = tag;
+    }
+    public String getFromTag() {
+        return this.fromTag;
     }
 }
