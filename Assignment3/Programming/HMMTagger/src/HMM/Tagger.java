@@ -11,9 +11,9 @@ public class Tagger {
     private static String currentTag;
     private static Map<String, WordTag> wordMap = new HashMap<>();
     private static Map<String, TagTag> tagMap = new HashMap<>();
-    //private static Map<String, List<TagInfo>> optionalOutput = new HashMap<>();
+    private static List<WordPath> optionalOutput = new ArrayList<>();
     private static List<String> totalTags = new ArrayList<>();
-    private static Stack<List<TagInfo>> optionalOutput = new Stack<>();
+    //private static Stack<List<TagInfo>> optionalOutput = new Stack<>();
 
     static void parseFirstLine (String firstLine) {
         String[] splitString = firstLine.split("\t");
@@ -74,15 +74,15 @@ public class Tagger {
     }
 
     static double transPro (String preTag, String currentTag) {
-        return tagMap.get(currentTag).getTagCount(preTag) / tagMap.get(preTag).getTotalCount();
+        return tagMap.get(preTag).getTagCount(currentTag) / tagMap.get(preTag).getTotalCount();
     }
 
     static List<TagInfo> calcProb (String word, List<TagInfo> preTagList) {
         List<TagInfo> currTagList = new ArrayList<>();
-        if (tagMap.containsKey(word)) {
+        if (wordMap.containsKey(word)) {
             WordTag tags;
             tags = wordMap.get(word);
-            for (Map.Entry<String, Integer> entry : tags.getTagMap().entrySet()) {
+            for (Map.Entry<String, Double> entry : tags.getTagMap().entrySet()) {
                 double maximumProb = 0.0;
                 TagInfo newTagInfo = new TagInfo();
                 String fromTag = null;
@@ -99,7 +99,9 @@ public class Tagger {
                 newTagInfo.setTag(curTag);
                 currTagList.add(newTagInfo);
             }
-            optionalOutput.push(currTagList);
+            WordPath wordPath = new WordPath();
+            wordPath.setWordPath(word, currTagList);
+            optionalOutput.add(wordPath);
         } else {
             for (String curTag: totalTags) {
                 double maximumProb = 0.0;
@@ -137,24 +139,36 @@ public class Tagger {
         newTagInfo.setProb(maximumProb);
         newTagInfo.setTag("End");
         currTagList.add(newTagInfo);
-        optionalOutput.push(currTagList);
+        WordPath wordPath = new WordPath();
+        wordPath.setWordPath("", currTagList);
+        optionalOutput.add(wordPath);
     }
 
     static void tagPath () {
-        Stack<String> path = new Stack<>();
+        Stack<PathInfo> path = new Stack<>();
         List<TagInfo> tagInfoList;
-        tagInfoList = optionalOutput.pop();
+        tagInfoList = optionalOutput.get(optionalOutput.size() - 1).getPath();
         TagInfo tagInfo = tagInfoList.get(0);
         String toTag = tagInfo.getFromTag();
-        while (!optionalOutput.empty()) {
-            tagInfoList = optionalOutput.pop();
-            for (TagInfo info: tagInfoList) {
+        for (int i = optionalOutput.size() - 2; i >= 0 ; i--) {
+            String word;
+            word = optionalOutput.get(i).getWord();
+            tagInfoList = optionalOutput.get(i).getPath();
+            for (TagInfo info : tagInfoList) {
                 if (info.getTag().equals(toTag)) {
+                    PathInfo pathInfo = new PathInfo();
+                    pathInfo.setPathInfo(word, toTag);
+                    path.push(pathInfo);
                     toTag = info.getFromTag();
-                    path.push(toTag);
                 }
             }
         }
+        while (!path.empty()) {
+            PathInfo pathInfo;
+            pathInfo = path.pop();
+            System.out.println(pathInfo.getWord() + "\t" + pathInfo.getPath());
+        }
+        System.out.println("End");
     }
 
     static void taggingWords (String testSet) throws IOException {
@@ -166,14 +180,14 @@ public class Tagger {
             tagInfo.setProb(1.0);
             List<TagInfo> intiTagInfo = new ArrayList<>();
             intiTagInfo.add(tagInfo);
-            optionalOutput.push(intiTagInfo);
             List<TagInfo> preTagList = intiTagInfo;
             while ((line = reader.readLine()) != null) {
                 if (line.length() > 0) {
                     preTagList = calcProb(line, preTagList);
-                    optionalOutput.push(preTagList);
                 } else {
                     calcEndPro(preTagList);
+                    tagPath();
+                    preTagList.clear();
                 }
             }
 
@@ -185,7 +199,7 @@ public class Tagger {
     public static void main (String[] args) throws IOException {
         parseCorpus(args[0]);
         taggingWords(args[1]);
-        tagPath();
+
         System.out.println("code");
     }
 }
