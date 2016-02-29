@@ -20,10 +20,6 @@ public class Tagger {
     private static List<WordPath> optionalOutput = new ArrayList<>();
     private static List<String> totalTags = new ArrayList<>();
     private static Stack<PathInfo> path = new Stack<>();
-    static int lineNum = 1;
-    static int num = 1;
-
-    //private static Stack<List<TagInfo>> optionalOutput = new Stack<>();
 
     static void parseFirstLine (String firstLine) {
         String[] splitString = firstLine.split("\t");
@@ -88,7 +84,6 @@ public class Tagger {
     }
 
     static List<TagInfo> calcProb (String word, List<TagInfo> preTagList) {
-        num++;
         List<TagInfo> currTagList = new ArrayList<>();
         if (wordMap.containsKey(word)) {
             WordTag tags;
@@ -99,7 +94,13 @@ public class Tagger {
                 String fromTag = null;
                 String curTag = entry.getKey();
                 for (TagInfo tagInfo : preTagList) {
-                    double prob = Math.max(maximumProb, tagInfo.getProb() * emitPro(curTag, tags) * transPro(tagInfo.getTag(), curTag));
+                    int mapSize = tags.getTagMap().size();
+                    double prob;
+                    if (mapSize == 1 && tagMap.get(tagInfo.getTag()).getTagCount(curTag) == 0) {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * emitPro(curTag, tags) * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10);
+                    } else {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * emitPro(curTag, tags) * transPro(tagInfo.getTag(), curTag) * 10);
+                    }
                     if (maximumProb != prob) {
                         maximumProb = prob;
                         fromTag = tagInfo.getTag();
@@ -119,7 +120,7 @@ public class Tagger {
                 TagInfo newTagInfo = new TagInfo();
                 String fromTag = null;
                 for (TagInfo tagInfo : preTagList) {
-                    double prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag));
+                    double prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag)* 10);
                     if (maximumProb != prob) {
                         maximumProb = prob;
                         fromTag = tagInfo.getTag();
@@ -159,7 +160,7 @@ public class Tagger {
         optionalOutput.add(wordPath);
     }
 
-    static void tagPath () throws IOException{
+    static void tagPath (BufferedWriter bw) throws IOException{
         List<TagInfo> tagInfoList;
         tagInfoList = optionalOutput.get(optionalOutput.size() - 1).getPath();
         TagInfo tagInfo = tagInfoList.get(0);
@@ -179,11 +180,7 @@ public class Tagger {
             }
         }
         optionalOutput.clear();
-        while (!path.isEmpty()) {
-            PathInfo pathInfo;
-            pathInfo = path.pop();
-            System.out.println(pathInfo.getWord() + "\t" + pathInfo.getPath());
-        }
+        writeFile(bw);
     }
 
 
@@ -196,7 +193,7 @@ public class Tagger {
         return intiTagInfo;
     }
 
-    static void taggingWords (String testSet) throws IOException {
+    static void taggingWords (String testSet, BufferedWriter bw) throws IOException {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(testSet));
             String line;
@@ -206,7 +203,7 @@ public class Tagger {
                     preTagList = calcProb(line, preTagList);
                 } else {
                     calcEndPro(preTagList);
-                    tagPath();
+                    tagPath(bw);
                     System.out.println("\n");
                     preTagList.clear();
                     preTagList = intiPreTagList();
@@ -218,23 +215,22 @@ public class Tagger {
         }
     }
 
-    public static void writeFile() throws IOException {
-        FileWriter fw = new FileWriter("out.txt");
+    public static void writeFile(BufferedWriter bw) throws IOException {
         while(!path.empty()) {
             PathInfo pathInfo;
             pathInfo = path.pop();
-            fw.write(pathInfo.getWord() + "\t" + pathInfo.getPath());
-            fw.write("\n");
+            bw.write(pathInfo.getWord() + "\t" + pathInfo.getPath());
+            bw.newLine();
         }
-
-            fw.close();
-
-
+        bw.newLine();
     }
 
     public static void main (String[] args) throws IOException {
+        File file = new File("out.txt");
+        FileOutputStream fos = new FileOutputStream(file);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         parseCorpus(args[0]);
-        taggingWords(args[1]);
-//        writeFile();
+        taggingWords(args[1], bw);
+        bw.close();
     }
 }
