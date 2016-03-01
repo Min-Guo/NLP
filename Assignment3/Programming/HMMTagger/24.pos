@@ -8994,7 +8994,7 @@ close	NN
 
 g	NNP
 -	:
-10.06.89	NNP
+10.06.89	CD
 NAV:22.15	NNP
 .	.
 
@@ -14886,7 +14886,7 @@ de	NNP
 Belgique	NNP
 S.A.	NNP
 owns	VBZ
-9.69	DT
+9.69	CD
 %	NN
 and	CC
 Financiere	NNP
@@ -15282,7 +15282,7 @@ stake	NN
 in	IN
 Hammond	NNP
 to	TO
-23.57	DT
+23.57	CD
 %	NN
 in	IN
 recent	JJ
@@ -16766,7 +16766,7 @@ about	IN
 percentage	NN
 point	NN
 to	TO
-7.16	DT
+7.16	CD
 %	NN
 ,	,
 the	DT
@@ -18117,7 +18117,7 @@ day	NN
 to	TO
 yield	VB
 about	IN
-9.28	DT
+9.28	CD
 %	NN
 to	TO
 a	DT
@@ -20673,7 +20673,7 @@ skidded	VBD
 190.58	CD
 ,	,
 to	TO
-2569.26	VB
+2569.26	CD
 .	.
 
 The	DT
@@ -21123,22 +21123,22 @@ shares	NNS
 Dow	NNP
 Jones	NNP
 industrials	VBZ
-2569.26	RB
+2569.26	CD
 ,	,
 off	RB
 190.58	CD
 ;	:
 transportation	NN
-1406.29	NN
+1406.29	CD
 ,	,
-off	IN
-78.06	NN
+off	RB
+78.06	CD
 ;	:
 utilities	NNS
-211.96	RB
+211.96	CD
 ,	,
-off	IN
-7.29	NN
+off	RB
+7.29	CD
 .	.
 
 Bonds	NNS
@@ -21148,7 +21148,7 @@ Lehman	NNP
 Hutton	NNP
 Treasury	NNP
 index	NN
-3421.29	NN
+3421.29	CD
 ,	,
 up	RB
 
@@ -21158,14 +21158,14 @@ Dow	NNP
 Jones	NNP
 futures	NNS
 index	NN
-129.87	NN
+129.87	CD
 ,	,
 up	RB
 0.01	CD
 ;	:
 spot	NN
 index	NN
-129.25	NN
+129.25	CD
 ,	,
 up	RB
 0.28	CD
@@ -21182,8 +21182,8 @@ off	RB
 1.8740	CD
 marks	NNS
 ,	,
-off	IN
-0.0343	NN
+off	RB
+0.0343	CD
 .	.
 
 A	DT
@@ -22539,7 +22539,7 @@ Oct.	NNP
 14	CD
 to	TO
 Dec.	NNP
-31.	NNP
+31.	CD
 ,	,
 as	IN
 part	NN
@@ -22707,7 +22707,7 @@ year	NN
 Siemens	NNP
 will	MD
 hold	VB
-74.9	DT
+74.9	CD
 %	NN
 of	IN
 the	DT
@@ -22722,7 +22722,7 @@ Electronic	NNP
 Components	NNP
 Co.	NNP
 ,	,
-25.1	DT
+25.1	CD
 %	NN
 .	.
 
@@ -23119,7 +23119,7 @@ soared	VBD
 97	CD
 %	NN
 to	TO
-839	$
+839	CD
 million	CD
 francs	NNS
 (	(
@@ -23186,7 +23186,7 @@ the	DT
 first	JJ
 half	NN
 was	VBD
-8.734	$
+8.734	CD
 billion	CD
 francs	NNS
 ,	,
@@ -23195,7 +23195,7 @@ about	IN
 12	CD
 %	NN
 from	IN
-9.934	$
+9.934	CD
 billion	CD
 francs	NNS
 a	DT
@@ -23256,7 +23256,7 @@ francs	NNS
 on	IN
 revenue	NN
 of	IN
-18.819	$
+18.819	CD
 billion	CD
 francs	NNS
 .	.
@@ -26326,7 +26326,7 @@ $	$
 a	DT
 share	NN
 for	IN
-68.8	$
+68.8	CD
 million	CD
 shares	NNS
 .	.

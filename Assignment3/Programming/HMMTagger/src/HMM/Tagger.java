@@ -1,8 +1,5 @@
 package HMM;
 
-
-import com.sun.tools.javac.tree.JCTree;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -84,6 +81,19 @@ public class Tagger {
         return tagMap.get(preTag).getTagCount(currentTag) / tagMap.get(preTag).getTotalCount();
     }
 
+    static boolean isVaildNUmber (String word) {
+        for (char c: word.toCharArray()) {
+            if (Character.isDigit(c)) {
+                continue;
+            } else if (c == '.') {
+                continue;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     static TagInfo unknownWordTagInfo (String curTag, List<TagInfo> preTagList) {
         double maximumProb = 0.0;
         TagInfo newTagInfo = new TagInfo();
@@ -137,6 +147,11 @@ public class Tagger {
             TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
             currTagList.add(newTagInfo);
             currTagList.add(newTagInfo);
+        } else if (isVaildNUmber(word)) {
+            String curTag = "CD";
+            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+            currTagList.add(newTagInfo);
+            currTagList.add(newTagInfo);
         } else {
             for (String curTag : totalTags) {
                 double maximumProb = 0.0;
@@ -164,8 +179,8 @@ public class Tagger {
     }
 
     static List<TagInfo> calcProb (String word, List<TagInfo> preTagList) {
-        List<TagInfo> currTagList = new ArrayList<>();
         if (wordMap.containsKey(word)) {
+            List<TagInfo> currTagList = new ArrayList<>();
             WordTag tags;
             tags = wordMap.get(word);
             for (Map.Entry<String, Double> entry : tags.getTagMap().entrySet()) {
@@ -343,7 +358,7 @@ public class Tagger {
     }
 
     public static void main (String[] args) throws IOException {
-        File file = new File("23_new.pos");
+        File file = new File("24.pos");
         FileOutputStream fos = new FileOutputStream(file);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         parseCorpus(args[0]);
