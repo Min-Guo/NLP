@@ -97,9 +97,9 @@ public class Tagger {
                     int mapSize = tags.getTagMap().size();
                     double prob;
                     if (mapSize == 1 && tagMap.get(tagInfo.getTag()).getTagCount(curTag) == 0) {
-                        prob = Math.max(maximumProb, tagInfo.getProb() * emitPro(curTag, tags) * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10);
+                        prob = Math.max(maximumProb, tagInfo.getProb() * emitPro(curTag, tags) * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10.0);
                     } else {
-                        prob = Math.max(maximumProb, tagInfo.getProb() * emitPro(curTag, tags) * transPro(tagInfo.getTag(), curTag) * 10);
+                        prob = Math.max(maximumProb, tagInfo.getProb() * emitPro(curTag, tags) * transPro(tagInfo.getTag(), curTag) * 10.0);
                     }
                     if (maximumProb != prob) {
                         maximumProb = prob;
@@ -115,12 +115,20 @@ public class Tagger {
             wordPath.setWordPath(word, currTagList);
             optionalOutput.add(wordPath);
         } else {
-            for (String curTag: totalTags) {
+//            String curTag = null;
+            WordTag tags;
+            tags = wordMap.get(word);
+            if (word.substring(word.length() - 1).equals("s")) {
+                String  curTag = "NNS";
                 double maximumProb = 0.0;
                 TagInfo newTagInfo = new TagInfo();
                 String fromTag = null;
                 for (TagInfo tagInfo : preTagList) {
-                    double prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag)* 10);
+                    double prob;
+                    if(tagMap.get(tagInfo.getTag()).getTagCount(curTag) == 0) {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10.0);
+                    } else {
+                     prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag) * 10.0);}
                     if (maximumProb != prob) {
                         maximumProb = prob;
                         fromTag = tagInfo.getTag();
@@ -131,6 +139,134 @@ public class Tagger {
                 newTagInfo.setProb(maximumProb);
                 newTagInfo.setTag(curTag);
                 currTagList.add(newTagInfo);
+            } else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ed")) {
+                String curTag = "VBN";
+                double maximumProb = 0.0;
+                TagInfo newTagInfo = new TagInfo();
+                String fromTag = null;
+                for (TagInfo tagInfo : preTagList) {
+                    double prob;
+                    if(tagMap.get(tagInfo.getTag()).getTagCount(curTag) == 0) {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10.0);
+                    } else {
+                     prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag) * 10.0);}
+                    if (maximumProb != prob) {
+                        maximumProb = prob;
+                        fromTag = tagInfo.getTag();
+                    }
+                }
+
+                newTagInfo.setFromTag(fromTag);
+                newTagInfo.setProb(maximumProb);
+                newTagInfo.setTag(curTag);
+                currTagList.add(newTagInfo);
+            } else if (word.length() >= 4 && word.substring(word.length() - 4).equals("able")) {
+                String curTag = "JJ";
+                double maximumProb = 0.0;
+                TagInfo newTagInfo = new TagInfo();
+                String fromTag = null;
+                for (TagInfo tagInfo : preTagList) {
+                    double prob;
+                    if(tagMap.get(tagInfo.getTag()).getTagCount(curTag) == 0) {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10.0);
+                    } else {
+                    prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag) * 10.0);}
+                    if (maximumProb != prob) {
+                        maximumProb = prob;
+                        fromTag = tagInfo.getTag();
+                    }
+                }
+
+                newTagInfo.setFromTag(fromTag);
+                newTagInfo.setProb(maximumProb);
+                newTagInfo.setTag(curTag);
+                currTagList.add(newTagInfo);
+            } else if (word.length() >= 3 && word.substring(word.length() - 3).equals("ing")) {
+                String curTag = "VBG";
+                double maximumProb = 0.0;
+                TagInfo newTagInfo = new TagInfo();
+                String fromTag = null;
+                for (TagInfo tagInfo : preTagList) {
+
+                    double prob;
+                    if(tagMap.get(tagInfo.getTag()).getTagCount(curTag) == 0) {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10.0);
+                    } else {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag) * 10.0);
+                    }
+                    if (maximumProb != prob) {
+                        maximumProb = prob;
+                        fromTag = tagInfo.getTag();
+                    }
+                }
+                if (word.equals("hamstring")) {
+                    System.out.println(maximumProb);
+                }
+                newTagInfo.setFromTag(fromTag);
+                newTagInfo.setProb(maximumProb);
+                newTagInfo.setTag(curTag);
+                currTagList.add(newTagInfo);
+            } else if (Character.isUpperCase(word.charAt(0)) && word.substring(word.length() - 1).equals("s")) {
+                String curTag = "NNPS";
+                double maximumProb = 0.0;
+                TagInfo newTagInfo = new TagInfo();
+                String fromTag = null;
+                for (TagInfo tagInfo : preTagList) {
+                    double prob;
+                    if(tagMap.get(tagInfo.getTag()).getTagCount(curTag) == 0) {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10.0);
+                    } else {
+                         prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag) * 10.0);
+                    }
+                    if (maximumProb != prob) {
+                        maximumProb = prob;
+                        fromTag = tagInfo.getTag();
+                    }
+                }
+
+                newTagInfo.setFromTag(fromTag);
+                newTagInfo.setProb(maximumProb);
+                newTagInfo.setTag(curTag);
+                currTagList.add(newTagInfo);
+            } else if (Character.isUpperCase(word.charAt(0))) {
+                String curTag = "NNP";
+                double maximumProb = 0.0;
+                TagInfo newTagInfo = new TagInfo();
+                String fromTag = null;
+                for (TagInfo tagInfo : preTagList) {
+                    double prob;
+                    if(tagMap.get(tagInfo.getTag()).getTagCount(curTag) == 0) {
+                        prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * (1.0 / tagMap.get(tagInfo.getTag()).getTotalCount()) * 10.0);
+                    } else {
+                     prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag) * 10.0);}
+                    if (maximumProb != prob) {
+                        maximumProb = prob;
+                        fromTag = tagInfo.getTag();
+                    }
+                }
+
+                newTagInfo.setFromTag(fromTag);
+                newTagInfo.setProb(maximumProb);
+                newTagInfo.setTag(curTag);
+                currTagList.add(newTagInfo);
+            } else {
+                for (String curTag : totalTags) {
+                    double maximumProb = 0.0;
+                    TagInfo newTagInfo = new TagInfo();
+                    String fromTag = null;
+                    for (TagInfo tagInfo : preTagList) {
+                        double prob = Math.max(maximumProb, tagInfo.getProb() * 1.0 * transPro(tagInfo.getTag(), curTag) * 10.0);
+                        if (maximumProb != prob) {
+                            maximumProb = prob;
+                            fromTag = tagInfo.getTag();
+                        }
+                    }
+
+                    newTagInfo.setFromTag(fromTag);
+                    newTagInfo.setProb(maximumProb);
+                    newTagInfo.setTag(curTag);
+                    currTagList.add(newTagInfo);
+                }
             }
             WordPath wordPath = new WordPath();
             wordPath.setWordPath(word, currTagList);
@@ -145,7 +281,7 @@ public class Tagger {
         TagInfo newTagInfo = new TagInfo();
         String fromTag = null;
         for (TagInfo tagInfo : preTagList) {
-            double prob = Math.max(maximumProb, tagInfo.getProb() * transPro(tagInfo.getTag(), "End"));
+            double prob = Math.max(maximumProb, tagInfo.getProb() * transPro(tagInfo.getTag(), "End") * 10.0);
             if (maximumProb != prob) {
                 maximumProb = prob;
                 fromTag = tagInfo.getTag();
