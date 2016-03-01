@@ -81,11 +81,15 @@ public class Tagger {
         return tagMap.get(preTag).getTagCount(currentTag) / tagMap.get(preTag).getTotalCount();
     }
 
-    static boolean isVaildNUmber (String word) {
+    static boolean isValidNUmber (String word) {
         for (char c: word.toCharArray()) {
             if (Character.isDigit(c)) {
                 continue;
             } else if (c == '.') {
+                continue;
+            } else if (c == '-'){
+                continue;
+            } else if (c == ','){
                 continue;
             } else {
                 return false;
@@ -122,8 +126,18 @@ public class Tagger {
             String  curTag = "NNS";
             TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
             currTagList.add(newTagInfo);
+        } else if (word.charAt(0) != '-' && word.contains("-")) {
+            String curTag = "JJ";
+            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+            currTagList.add(newTagInfo);
+            currTagList.add(newTagInfo);
         } else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ed")) {
             String curTag = "VBN";
+            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+            currTagList.add(newTagInfo);
+            currTagList.add(newTagInfo);
+        } else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ly")) {
+            String curTag = "RB";
             TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
             currTagList.add(newTagInfo);
             currTagList.add(newTagInfo);
@@ -147,7 +161,7 @@ public class Tagger {
             TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
             currTagList.add(newTagInfo);
             currTagList.add(newTagInfo);
-        } else if (isVaildNUmber(word)) {
+        } else if (isValidNUmber(word)) {
             String curTag = "CD";
             TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
             currTagList.add(newTagInfo);
