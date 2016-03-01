@@ -30,11 +30,10 @@
       <file leaf-file-name="Tagger.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HMM/Tagger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.426267">
-              <caret line="219" column="9" selection-start-line="219" selection-start-column="9" selection-end-line="219" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.2580645">
+              <caret line="286" column="32" selection-start-line="286" selection-start-column="32" selection-end-line="286" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4061#4102#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -184,7 +183,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="HMM.Tagger" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="WSJ_02-21.pos WSJ_24.words" />
+      <option name="PROGRAM_PARAMETERS" value="WSJ_02-21.pos WSJ_23.words" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -530,7 +529,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4061#4102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -737,7 +735,6 @@
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4061#4102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -863,7 +860,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4061#4102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -967,7 +963,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4061#4102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1032,7 +1027,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4061#4102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1278,11 +1272,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HMM/Tagger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.426267">
-          <caret line="219" column="9" selection-start-line="219" selection-start-column="9" selection-end-line="219" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.2580645">
+          <caret line="286" column="32" selection-start-line="286" selection-start-column="32" selection-end-line="286" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4061#4102#0" expanded="false" />
           </folding>
         </state>
       </provider>

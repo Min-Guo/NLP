@@ -113,11 +113,6 @@ public class Tagger {
                 fromTag = tagInfo.getTag();
             }
         }
-
-//        newTagInfo.setFromTag(fromTag);
-//        newTagInfo.setProb(maximumProb);
-//        newTagInfo.setTag(curTag);
-//        return newTagInfo;
         return newTagInfo.createTagInfo(fromTag, curTag, maximumProb);
     }
 
@@ -131,11 +126,9 @@ public class Tagger {
         List<TagInfo> currTagList = new ArrayList<>();
         if (word.substring(word.length() - 1).equals("s")) {
             specialTagCase("NNS", currTagList, preTagList);
-        }
-        else if (word.charAt(0) != '-' && word.contains("-")) {
+        } else if (word.charAt(0) != '-' && word.contains("-")) {
             specialTagCase("JJ", currTagList, preTagList);
-        }
-        else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ed")) {
+        } else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ed")) {
             specialTagCase("VBN", currTagList, preTagList);
         } else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ly")) {
             specialTagCase("RB", currTagList, preTagList);
@@ -291,7 +284,7 @@ public class Tagger {
     }
 
     public static void main (String[] args) throws IOException {
-        File file = new File("24_better.pos");
+        File file = new File("23.pos");
         FileOutputStream fos = new FileOutputStream(file);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         parseCorpus(args[0]);
