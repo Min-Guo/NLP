@@ -28,4 +28,11 @@ public class TagInfo {
     public String getFromTag() {
         return this.fromTag;
     }
+
+    public TagInfo createTagInfo (String fromTag, String tag, double prob) {
+        this.fromTag = fromTag;
+        this.tag = tag;
+        this.prob = prob;
+        return this;
+    }
 }
