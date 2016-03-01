@@ -30,15 +30,24 @@
       <file leaf-file-name="Tagger.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HMM/Tagger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43644717">
-              <caret line="90" column="25" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+            <state vertical-scroll-proportion="2.4609494">
+              <caret line="392" column="39" selection-start-line="392" selection-start-column="39" selection-end-line="392" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4061#4102#0" expanded="false" />
-                <element signature="e#7358#7411#0" expanded="false" />
-                <element signature="e#9102#9151#0" expanded="false" />
-                <element signature="e#9635#9701#0" expanded="false" />
-                <marker date="1456855800000" expanded="false" signature="13104:13214" placeholder="..." />
+                <element signature="e#4741#4778#0" expanded="false" />
+                <element signature="e#5031#5066#0" expanded="false" />
+                <element signature="e#5386#5422#0" expanded="false" />
+                <element signature="e#5735#5770#0" expanded="false" />
+                <element signature="e#6084#6119#0" expanded="false" />
+                <element signature="e#6432#6468#0" expanded="false" />
+                <element signature="e#6799#6836#0" expanded="false" />
+                <element signature="e#7119#7155#0" expanded="false" />
+                <element signature="e#7419#7454#0" expanded="false" />
+                <element signature="e#8234#8287#0" expanded="false" />
+                <element signature="e#9978#10027#0" expanded="false" />
+                <element signature="e#10511#10577#0" expanded="false" />
+                <marker date="1456857394000" expanded="false" signature="13980:14090" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -519,7 +528,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="98" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/HMM/Tagger.java</url>
+          <line>175</line>
+          <properties />
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="100" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -535,10 +552,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4061#4102#0" expanded="false" />
-            <element signature="e#7358#7411#0" expanded="false" />
-            <element signature="e#9102#9151#0" expanded="false" />
-            <element signature="e#9635#9701#0" expanded="false" />
-            <marker date="1456855800000" expanded="false" signature="13104:13214" placeholder="..." />
+            <element signature="e#4741#4778#0" expanded="false" />
+            <element signature="e#5031#5066#0" expanded="false" />
+            <element signature="e#5386#5422#0" expanded="false" />
+            <element signature="e#5735#5770#0" expanded="false" />
+            <element signature="e#6084#6119#0" expanded="false" />
+            <element signature="e#6432#6468#0" expanded="false" />
+            <element signature="e#6799#6836#0" expanded="false" />
+            <element signature="e#7119#7155#0" expanded="false" />
+            <element signature="e#7419#7454#0" expanded="false" />
+            <element signature="e#8234#8287#0" expanded="false" />
+            <element signature="e#9978#10027#0" expanded="false" />
+            <element signature="e#10511#10577#0" expanded="false" />
+            <marker date="1456857394000" expanded="false" signature="13980:14090" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -746,10 +772,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4061#4102#0" expanded="false" />
-            <element signature="e#7358#7411#0" expanded="false" />
-            <element signature="e#9102#9151#0" expanded="false" />
-            <element signature="e#9635#9701#0" expanded="false" />
-            <marker date="1456855800000" expanded="false" signature="13104:13214" placeholder="..." />
+            <element signature="e#4741#4778#0" expanded="false" />
+            <element signature="e#5031#5066#0" expanded="false" />
+            <element signature="e#5386#5422#0" expanded="false" />
+            <element signature="e#5735#5770#0" expanded="false" />
+            <element signature="e#6084#6119#0" expanded="false" />
+            <element signature="e#6432#6468#0" expanded="false" />
+            <element signature="e#6799#6836#0" expanded="false" />
+            <element signature="e#7119#7155#0" expanded="false" />
+            <element signature="e#7419#7454#0" expanded="false" />
+            <element signature="e#8234#8287#0" expanded="false" />
+            <element signature="e#9978#10027#0" expanded="false" />
+            <element signature="e#10511#10577#0" expanded="false" />
+            <marker date="1456857394000" expanded="false" signature="13980:14090" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -876,10 +911,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4061#4102#0" expanded="false" />
-            <element signature="e#7358#7411#0" expanded="false" />
-            <element signature="e#9102#9151#0" expanded="false" />
-            <element signature="e#9635#9701#0" expanded="false" />
-            <marker date="1456855800000" expanded="false" signature="13104:13214" placeholder="..." />
+            <element signature="e#4741#4778#0" expanded="false" />
+            <element signature="e#5031#5066#0" expanded="false" />
+            <element signature="e#5386#5422#0" expanded="false" />
+            <element signature="e#5735#5770#0" expanded="false" />
+            <element signature="e#6084#6119#0" expanded="false" />
+            <element signature="e#6432#6468#0" expanded="false" />
+            <element signature="e#6799#6836#0" expanded="false" />
+            <element signature="e#7119#7155#0" expanded="false" />
+            <element signature="e#7419#7454#0" expanded="false" />
+            <element signature="e#8234#8287#0" expanded="false" />
+            <element signature="e#9978#10027#0" expanded="false" />
+            <element signature="e#10511#10577#0" expanded="false" />
+            <marker date="1456857394000" expanded="false" signature="13980:14090" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -984,10 +1028,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4061#4102#0" expanded="false" />
-            <element signature="e#7358#7411#0" expanded="false" />
-            <element signature="e#9102#9151#0" expanded="false" />
-            <element signature="e#9635#9701#0" expanded="false" />
-            <marker date="1456855800000" expanded="false" signature="13104:13214" placeholder="..." />
+            <element signature="e#4741#4778#0" expanded="false" />
+            <element signature="e#5031#5066#0" expanded="false" />
+            <element signature="e#5386#5422#0" expanded="false" />
+            <element signature="e#5735#5770#0" expanded="false" />
+            <element signature="e#6084#6119#0" expanded="false" />
+            <element signature="e#6432#6468#0" expanded="false" />
+            <element signature="e#6799#6836#0" expanded="false" />
+            <element signature="e#7119#7155#0" expanded="false" />
+            <element signature="e#7419#7454#0" expanded="false" />
+            <element signature="e#8234#8287#0" expanded="false" />
+            <element signature="e#9978#10027#0" expanded="false" />
+            <element signature="e#10511#10577#0" expanded="false" />
+            <marker date="1456857394000" expanded="false" signature="13980:14090" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1053,10 +1106,19 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4061#4102#0" expanded="false" />
-            <element signature="e#7358#7411#0" expanded="false" />
-            <element signature="e#9102#9151#0" expanded="false" />
-            <element signature="e#9635#9701#0" expanded="false" />
-            <marker date="1456855800000" expanded="false" signature="13104:13214" placeholder="..." />
+            <element signature="e#4741#4778#0" expanded="false" />
+            <element signature="e#5031#5066#0" expanded="false" />
+            <element signature="e#5386#5422#0" expanded="false" />
+            <element signature="e#5735#5770#0" expanded="false" />
+            <element signature="e#6084#6119#0" expanded="false" />
+            <element signature="e#6432#6468#0" expanded="false" />
+            <element signature="e#6799#6836#0" expanded="false" />
+            <element signature="e#7119#7155#0" expanded="false" />
+            <element signature="e#7419#7454#0" expanded="false" />
+            <element signature="e#8234#8287#0" expanded="false" />
+            <element signature="e#9978#10027#0" expanded="false" />
+            <element signature="e#10511#10577#0" expanded="false" />
+            <marker date="1456857394000" expanded="false" signature="13980:14090" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1302,15 +1364,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HMM/Tagger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43644717">
-          <caret line="90" column="25" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+        <state vertical-scroll-proportion="2.4609494">
+          <caret line="392" column="39" selection-start-line="392" selection-start-column="39" selection-end-line="392" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4061#4102#0" expanded="false" />
-            <element signature="e#7358#7411#0" expanded="false" />
-            <element signature="e#9102#9151#0" expanded="false" />
-            <element signature="e#9635#9701#0" expanded="false" />
-            <marker date="1456855800000" expanded="false" signature="13104:13214" placeholder="..." />
+            <element signature="e#4741#4778#0" expanded="false" />
+            <element signature="e#5031#5066#0" expanded="false" />
+            <element signature="e#5386#5422#0" expanded="false" />
+            <element signature="e#5735#5770#0" expanded="false" />
+            <element signature="e#6084#6119#0" expanded="false" />
+            <element signature="e#6432#6468#0" expanded="false" />
+            <element signature="e#6799#6836#0" expanded="false" />
+            <element signature="e#7119#7155#0" expanded="false" />
+            <element signature="e#7419#7454#0" expanded="false" />
+            <element signature="e#8234#8287#0" expanded="false" />
+            <element signature="e#9978#10027#0" expanded="false" />
+            <element signature="e#10511#10577#0" expanded="false" />
+            <marker date="1456857394000" expanded="false" signature="13980:14090" placeholder="..." />
           </folding>
         </state>
       </provider>

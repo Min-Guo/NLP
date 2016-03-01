@@ -120,52 +120,70 @@ public class Tagger {
 //        return newTagInfo;
         return newTagInfo.createTagInfo(fromTag, curTag, maximumProb);
     }
+
+    static List<TagInfo> specialTagCase (String curTag, List<TagInfo> currTagList, List<TagInfo> preTagList) {
+        TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+        currTagList.add(newTagInfo);
+        return currTagList;
+    }
+
     static List<TagInfo> calcUnknownWord (String word, List<TagInfo> preTagList) {
         List<TagInfo> currTagList = new ArrayList<>();
         if (word.substring(word.length() - 1).equals("s")) {
-            String  curTag = "NNS";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-        } else if (word.charAt(0) != '-' && word.contains("-")) {
-            String curTag = "JJ";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-            currTagList.add(newTagInfo);
-        } else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ed")) {
-            String curTag = "VBN";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-            currTagList.add(newTagInfo);
+//            String  curTag = "NNS";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+            specialTagCase("NNS", currTagList, preTagList);
+        }
+        else if (word.charAt(0) != '-' && word.contains("-")) {
+//            String curTag = "JJ";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+//            currTagList.add(newTagInfo);
+            specialTagCase("JJ", currTagList, preTagList);
+        }
+        else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ed")) {
+//            String curTag = "VBN";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+//            currTagList.add(newTagInfo);
+            specialTagCase("VBN", currTagList, preTagList);
         } else if (word.length() >= 2 && word.substring(word.length() - 2).equals("ly")) {
-            String curTag = "RB";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-            currTagList.add(newTagInfo);
+//            String curTag = "RB";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+//            currTagList.add(newTagInfo);
+            specialTagCase("RB", currTagList, preTagList);
         } else if (word.length() >= 4 && word.substring(word.length() - 4).equals("able")) {
-            String curTag = "JJ";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-            currTagList.add(newTagInfo);
+//            String curTag = "JJ";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+//            currTagList.add(newTagInfo);
+            specialTagCase("JJ", currTagList, preTagList);
         } else if (word.length() >= 3 && word.substring(word.length() - 3).equals("ing")) {
-            String curTag = "VBG";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-            currTagList.add(newTagInfo);
+//            String curTag = "VBG";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+//            currTagList.add(newTagInfo);
+            specialTagCase("VBG", currTagList, preTagList);
         } else if (Character.isUpperCase(word.charAt(0)) && word.substring(word.length() - 1).equals("s")) {
-            String curTag = "NNPS";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-            currTagList.add(newTagInfo);
+//            String curTag = "NNPS";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+//            currTagList.add(newTagInfo);
+            specialTagCase("NNPS", currTagList, preTagList);
         } else if (Character.isUpperCase(word.charAt(0))) {
-            String curTag = "NNP";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-            currTagList.add(newTagInfo);
+//            String curTag = "NNP";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+//            currTagList.add(newTagInfo);
+            specialTagCase("NNP", currTagList, preTagList);
         } else if (isValidNUmber(word)) {
-            String curTag = "CD";
-            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
-            currTagList.add(newTagInfo);
-            currTagList.add(newTagInfo);
+//            String curTag = "CD";
+//            TagInfo newTagInfo = unknownWordTagInfo(curTag, preTagList);
+//            currTagList.add(newTagInfo);
+//            currTagList.add(newTagInfo);
+            specialTagCase("CD", currTagList, preTagList);
         } else {
             for (String curTag : totalTags) {
                 double maximumProb = 0.0;
@@ -372,7 +390,7 @@ public class Tagger {
     }
 
     public static void main (String[] args) throws IOException {
-        File file = new File("24.pos");
+        File file = new File("24_better.pos");
         FileOutputStream fos = new FileOutputStream(file);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         parseCorpus(args[0]);
