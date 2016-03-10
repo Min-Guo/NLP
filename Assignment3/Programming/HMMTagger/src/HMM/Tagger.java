@@ -284,7 +284,7 @@ public class Tagger {
     }
 
     public static void main (String[] args) throws IOException {
-        File file = new File("24_new.pos");
+        File file = new File("WSJ_23.pos");
         FileOutputStream fos = new FileOutputStream(file);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         parseCorpus(args[0]);
