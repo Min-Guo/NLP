@@ -31,11 +31,17 @@ public class FeatureBuilder {
         return extension;
     }
 
-    static void writeFile(BufferedWriter bw, String word, String prePos, String curPos,
+    static void writePCFile(BufferedWriter bw, String word, String prePos, String curPos,
                                  String preTag, String curTag) throws IOException {
             bw.write(word + "\t" + "prePos = " + prePos + "\t" + "curPos = " + curPos + "\t" +
-            "preTag = " + preTag + "\t" + "curTag = " + curTag);
+            "preTag = " + preTag + "\t" + curTag);
             bw.newLine();
+    }
+    static void writePFile(BufferedWriter bw, String word, String prePos, String curPos,
+                            String preTag) throws IOException {
+        bw.write(word + "\t" + "prePos = " + prePos + "\t" + "curPos = " + curPos + "\t" +
+                "preTag = " + preTag + "\t");
+        bw.newLine();
     }
 
     static void writeBlankLine(BufferedWriter bw) throws IOException {
@@ -54,7 +60,7 @@ public class FeatureBuilder {
                         word = splitString[0];
                         curPos = splitString[1];
                         curTag = splitString[2];
-                        writeFile(bw, word, prePos, curPos, preTag, curTag);
+                        writePCFile(bw, word, prePos, curPos, preTag, curTag);
                     } else {
                         writeBlankLine(bw);
                         initalize();
@@ -69,7 +75,7 @@ public class FeatureBuilder {
                         String[] splitString = line.split("\t");
                         word = splitString[0];
                         curPos = splitString[1];
-                        writeFile(bw, word, prePos, curPos, "@@", "@@");
+                        writePFile(bw, word, prePos, curPos, "@@");
                     } else {
                         writeBlankLine(bw);
                         initalize();
