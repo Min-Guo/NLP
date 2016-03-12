@@ -33,14 +33,14 @@ public class FeatureBuilder {
 
     static void writePCFile(BufferedWriter bw, String word, String prePos, String curPos,
                                  String preTag, String curTag) throws IOException {
-            bw.write(word + "\t" + "prePos = " + prePos + "\t" + "curPos = " + curPos + "\t" +
-            "preTag = " + preTag + "\t" + curTag);
+            bw.write(word + "\t" + "prePos=" + prePos + "\t" + "curPos=" + curPos + "\t" +
+            "preTag=" + preTag + "\t" + curTag);
             bw.newLine();
     }
     static void writePFile(BufferedWriter bw, String word, String prePos, String curPos,
                             String preTag) throws IOException {
-        bw.write(word + "\t" + "prePos = " + prePos + "\t" + "curPos = " + curPos + "\t" +
-                "preTag = " + preTag + "\t");
+        bw.write(word + "\t" + "prePos=" + prePos + "\t" + "curPos=" + curPos + "\t" +
+                "preTag=" + preTag + "\t");
         bw.newLine();
     }
 
