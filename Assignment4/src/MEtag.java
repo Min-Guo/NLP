@@ -5,6 +5,7 @@
 // invoke by:  java  MEtag dataFile  model  responseFile
 
 import java.io.*;
+import java.util.regex.Matcher;
 import opennlp.maxent.*;
 import opennlp.maxent.io.*;
 
@@ -32,7 +33,7 @@ public class MEtag {
 		    responseWriter.println();
 		    priorTag = "#";
 		} else {
-		    line = line.replaceAll("@@", priorTag);
+		    line = line.replaceAll("@@", Matcher.quoteReplacement(priorTag));
 		    String[] features = line.split("\t");
 		    String tag = m.getBestOutcome(m.eval(features));
 		    responseWriter.println(features[0] + "\t" + tag);
@@ -42,7 +43,7 @@ public class MEtag {
 	    responseWriter.close();
 	} catch (Exception e) {
 	    System.out.print("Error in data tagging: ");
-	    System.out.println(e);
+	    e.printStackTrace();
 	}
     }
 

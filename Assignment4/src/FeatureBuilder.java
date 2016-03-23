@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,7 +13,7 @@ public class FeatureBuilder {
     static String preTag = "";
     static String curTag = "";
 
-    static void initalize () {
+    static void initalize() {
         word = "";
         prePos = "";
         curPos = "";
