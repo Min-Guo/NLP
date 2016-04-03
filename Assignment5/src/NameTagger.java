@@ -59,7 +59,8 @@ public class NameTagger {
 
         if (extension.equals("pos-chunk")) {
             return curWord + "\t" + "prePos=" + prePos + "\t" + "preChunk=" + preChunk + "\t" + "preNameTag=" +
-                    "@@" + "\t" + "curPos=" + curPos + "\t" + "curChunk=" + curChunk + "\t"  + "nextPos=" + nextPos + "\t" + "nextChunk=" + nextChunk + "\t";
+                    "@@" + "\t" + "curPos=" + curPos + "\t" + "curChunk=" + curChunk + "\t"  + "nextPos=" + nextPos +
+                    "\t" + "nextChunk=" + nextChunk ;
         }
         return  "";
     }
