@@ -19,18 +19,25 @@ public class NameTagger {
     static String nextChunk;
     static String nextNameTag;
 
-    static void initalize() {
+    static void initalize(String extension) {
         curWord = "";
         nextWord = "";
         prePos = "";
         preChunk = "";
-        preNameTag = "";
         curPos = "";
         curChunk = "";
-        curNameTag = "";
         nextPos = "";
         nextChunk = "";
-        nextNameTag = "";
+        if (extension.equals("pos-chunk-name")) {
+            preNameTag = "";
+            curNameTag = "";
+            nextNameTag = "";
+        }
+        if (extension.equals("pos-chunk")) {
+            preNameTag = "@@";
+//            curNameTag = "@@";
+//            nextNameTag = "@@";
+        }
     }
 
     static String getFileExtension(String fileName) {
@@ -42,87 +49,113 @@ public class NameTagger {
         return extension;
     }
 
-    static String outPutLine() {
-        return curWord + "\t" + "prePos=" + prePos + "\t" + "preChunk=" + preChunk + "\t" + "preNameTag=" +
-                preNameTag + "\t" + "curPos=" + curPos + "\t" + "curChunk=" + curChunk + "\t" + "curNameTag=" +
-                curNameTag + "\t" + "nextPos=" + nextPos + "\t" + "nextChunk=" + nextChunk + "\t" + "nextNameTag=" +
-                nextNameTag + "\t";
+    static String outPutLine(String extension) {
+        if (extension.equals("pos-chunk-name")) {
+            return curWord + "\t" + "prePos=" + prePos + "\t" + "preChunk=" + preChunk + "\t" + "preNameTag=" +
+                    preNameTag + "\t" + "curPos=" + curPos + "\t" + "curChunk=" + curChunk + "\t" + "nextPos=" +
+                    nextPos + "\t" + "nextChunk=" + nextChunk + "\t" + "nextNameTag=" +
+                    nextNameTag + "\t" + curNameTag ;
+        }
+
+        if (extension.equals("pos-chunk")) {
+            return curWord + "\t" + "prePos=" + prePos + "\t" + "preChunk=" + preChunk + "\t" + "preNameTag=" +
+                    "@@" + "\t" + "curPos=" + curPos + "\t" + "curChunk=" + curChunk + "\t"  + "nextPos=" + nextPos + "\t" + "nextChunk=" + nextChunk + "\t";
+        }
+        return  "";
     }
 
-    static void setParameter() {
+    static void setParameter(String extension) {
         prePos = curPos;
         preChunk = curChunk;
-        preNameTag = curNameTag;
         curWord = nextWord;
         curPos = nextPos;
         curChunk = nextChunk;
-        curNameTag = nextNameTag;
+        if (extension.equals("pos-chunk-name")) {
+            preNameTag = curNameTag;
+            curNameTag = nextNameTag;
+        }
+    }
+
+    static void parseDiffCorpus(BufferedWriter bw, BufferedReader br, String extension) throws IOException{
+        String line;
+        while ((line = br.readLine()) != null) {
+            if(line.equals("-DOCSTART-\t-X-\tO\tO")) {
+                bw.write(line);
+                bw.newLine();
+            } else if (line.length() == 0 && prePos =="" && preChunk == "") {
+                bw.write(line);
+                bw.newLine();
+                initalize(extension);
+            } else if (line.length() == 0) {
+                nextPos = "";
+                nextChunk = "";
+                if (extension.equals("pos-chunk-name")) {
+                    nextNameTag = "";
+                }
+                bw.write(outPutLine(extension));
+                bw.newLine();
+                bw.write(line);
+                bw.newLine();
+                initalize(extension);
+            } else {
+                if(prePos == "" && preChunk == "") {
+                    String[] curLineSplit = line.split("\t");
+                    curWord = curLineSplit[0];
+                    curPos = curLineSplit[1];
+                    curChunk = curLineSplit[2];
+                    if (extension.equals("pos-chunk-name")) {
+                        curNameTag = curLineSplit[3];
+                    }
+                    line = br.readLine();
+                    if (line != null) {
+                        if (line.length() != 0) {
+                            String[] nextLineSpilt = line.split("\t");
+                            nextWord = nextLineSpilt[0];
+                            nextPos = nextLineSpilt[1];
+                            nextChunk = nextLineSpilt[2];
+                            if (extension.equals("pos-chunk-name")) {
+                                nextNameTag = nextLineSpilt[3];
+                            }
+                        }
+                        String outPutString = outPutLine(extension);
+                        bw.write(outPutString);
+                        bw.newLine();
+                        if (line.length() == 0) {
+                            bw.write(line);
+                            bw.newLine();
+                            initalize(extension);
+                        } else {
+                            setParameter(extension);
+                        }
+                    } else {
+                        break;
+                    }
+                } else {
+                    String[] nextLineSplit = line.split("\t");
+                    nextWord = nextLineSplit[0];
+                    nextPos = nextLineSplit[1];
+                    nextChunk = nextLineSplit[2];
+                    if (extension.equals("pos-chunk-name")) {
+                        nextNameTag = nextLineSplit[3];
+                    }
+                    String outPutString = outPutLine(extension);
+                    bw.write(outPutString);
+                    bw.newLine();
+                    setParameter(extension);
+                }
+            }
+        }
     }
 
     static void parseCorpus(String fileName, BufferedWriter bw) throws IOException {
-        initalize();
+        String fileExtension = getFileExtension(fileName);
+        initalize(fileExtension);
         BufferedReader br = new BufferedReader(new FileReader(fileName));
-        String line;
-        if (getFileExtension(fileName).equals("pos-chunk-name")) {
-            while ((line = br.readLine()) != null) {
-                if(line.equals("-DOCSTART-\t-X-\tO\tO")) {
-                    bw.write(line);
-                    bw.newLine();
-                } else if (line.length() == 0 && preNameTag =="" && prePos =="" && preChunk == "") {
-                    bw.write(line);
-                    bw.newLine();
-                    initalize();
-                } else if (line.length() == 0) {
-                    nextPos = "";
-                    nextChunk = "";
-                    nextNameTag = "";
-                    bw.write(outPutLine());
-                    bw.newLine();
-                    bw.write(line);
-                    bw.newLine();
-                    initalize();
-                } else {
-                    if(prePos == "" && preChunk == "" && preNameTag == "") {
-                        String[] curLineSplit = line.split("\t");
-                        curWord = curLineSplit[0];
-                        curPos = curLineSplit[1];
-                        curChunk = curLineSplit[2];
-                        curNameTag = curLineSplit[3];
-                        line = br.readLine();
-                        if (line != null) {
-                            if (line.length() != 0) {
-                                String[] nextLineSpilt = line.split("\t");
-                                nextWord = nextLineSpilt[0];
-                                nextPos = nextLineSpilt[1];
-                                nextChunk = nextLineSpilt[2];
-                                nextNameTag = nextLineSpilt[3];
-                            }
-                            String outPutString = outPutLine();
-                            bw.write(outPutString);
-                            bw.newLine();
-                            if (line.length() == 0) {
-                                bw.write(line);
-                                bw.newLine();
-                                initalize();
-                            } else {
-                                setParameter();
-                            }
-                        } else {
-                            break;
-                        }
-                    } else {
-                        String[] nextLineSplit = line.split("\t");
-                        nextWord = nextLineSplit[0];
-                        nextPos = nextLineSplit[1];
-                        nextChunk = nextLineSplit[2];
-                        nextNameTag = nextLineSplit[3];
-                        String outPutString = outPutLine();
-                        bw.write(outPutString);
-                        bw.newLine();
-                        setParameter();
-                    }
-                }
-            }
+        if (fileExtension.equals("pos-chunk-name")) {
+           parseDiffCorpus(bw, br, "pos-chunk-name");
+        }
+        if (fileExtension.equals("pos-chunk")) {
+            parseDiffCorpus(bw, br, "pos-chunk");
         }
     }
 

@@ -7,15 +7,11 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
 public class FeatureBuilder {
-    static String word = "";
+    static String word;
     static String prePos = "";
     static String curPos = "";
     static String preTag = "";
     static String curTag = "";
-    static String nextPos = "";
-    static String preCurPos = "";
-    static String preWord = "";
-    static String preCurTag = "";
 
     static void initalize() {
         word = "";
@@ -23,10 +19,6 @@ public class FeatureBuilder {
         curPos = "";
         preTag = "";
         curTag = "";
-        nextPos = "";
-        preCurPos = "";
-        preWord = "";
-        preCurTag = "";
     }
 
     static String getFileExtension(String fileName) {
@@ -39,14 +31,14 @@ public class FeatureBuilder {
     }
 
     static void writePCFile(BufferedWriter bw, String word, String prePos, String curPos,
-                            String preTag, String nextPos, String curTag) throws IOException {
+                            String preTag, String curTag) throws IOException {
         bw.write(word + "\t" + "prePos=" + prePos + "\t" + "curPos=" + curPos + "\t" +
-                "preTag=" + preTag + "\t" + nextPos + "\t" + curTag);
+                "preTag=" + preTag + "\t" + curTag);
         bw.newLine();
     }
-    static void writePFile(BufferedWriter bw, String word, String prePos, String curPos, String nextPos,
+    static void writePFile(BufferedWriter bw, String word, String prePos, String curPos,
                            String preTag) throws IOException {
-        bw.write(word + "\t" + "prePos=" + prePos + "\t" + "curPos=" + curPos + "\t" + nextPos + "\t" +
+        bw.write(word + "\t" + "prePos=" + prePos + "\t" + "curPos=" + curPos + "\t" +
                 "preTag=" + preTag + "\t");
         bw.newLine();
     }
@@ -62,70 +54,33 @@ public class FeatureBuilder {
             String line;
             if (getFileExtension(fileName).equals("pos-chunk")) {
                 while ((line = reader.readLine()) != null) {
-                    if(line.length() > 0) {
-                        String[] spiltFirstLine = line.split("\t");
-                        preWord = spiltFirstLine[0];
-                        preCurPos = spiltFirstLine[1];
-                        preCurTag = spiltFirstLine[2];
-                        break;
-                    } else {
-                        writeBlankLine(bw);
-                    }
-
-                }
-                while ((line = reader.readLine()) != null) {
                     if (line.length() > 0) {
                         String[] splitString = line.split("\t");
                         word = splitString[0];
                         curPos = splitString[1];
                         curTag = splitString[2];
-                        nextPos = curPos;
-                        writePCFile(bw, preWord, prePos, preCurPos, preTag, nextPos, preCurTag);
-//                        writePCFile(bw, word, prePos, curPos, preTag, curTag);
-                    } else {
-                        writePCFile(bw, preWord, prePos, preCurPos, preTag, "", preCurTag);
-//                        writeBlankLine(bw);
-                        initalize();
-                    }
-                    prePos = preCurPos;
-                    preTag = preCurTag;
-                    preWord = word;
-                    preCurPos = curPos;
-                    preCurTag = curTag;
-//                    prePos = curPos;
-//                    preTag = curTag;
-                }
-//                writePCFile(bw, preWord, prePos, preCurPos, preTag, "", preCurTag);
-            }
-            if (getFileExtension(fileName).equals("pos")) {
-                while ((line = reader.readLine()) != null) {
-                    if(line.length() > 0) {
-                        String[] spiltFirstLine = line.split("\t");
-                        preWord = spiltFirstLine[0];
-                        preCurPos = spiltFirstLine[1];
-                        break;
+                        writePCFile(bw, word, prePos, curPos, preTag, curTag);
                     } else {
                         writeBlankLine(bw);
+                        initalize();
                     }
-
+                    prePos = curPos;
+                    preTag = curTag;
                 }
+            }
+            if (getFileExtension(fileName).equals("pos")) {
                 while ((line = reader.readLine()) != null) {
                     if (line.length() > 0) {
                         String[] splitString = line.split("\t");
                         word = splitString[0];
                         curPos = splitString[1];
-                        nextPos = curPos;
-                        writePFile(bw, preWord, prePos, preCurPos, nextPos, "@@");
+                        writePFile(bw, word, prePos, curPos, "@@");
                     } else {
-                        writePFile(bw, preWord, prePos, preCurPos, "", "@@");
+                        writeBlankLine(bw);
                         initalize();
                     }
-                    prePos = preCurPos;
-                    preWord = word;
-                    preCurPos = curPos;
-//                    prePos = curPos;
+                    prePos = curPos;
                 }
-//                writePFile(bw, preWord, prePos, preCurPos, "", "@@");
             }
 
         } catch (IOException e) {
