@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
 public class NameTagger {
+    static String preWord;
     static String curWord;
     static String nextWord;
     static String prePos;
@@ -22,6 +23,7 @@ public class NameTagger {
     static String curCapital;
 
     static void initalize(String extension) {
+        preWord = "";
         curWord = "";
         nextWord = "";
         prePos = "";
@@ -57,18 +59,19 @@ public class NameTagger {
         if (extension.equals("pos-chunk-name")) {
             return curWord + "\t" + "prePos=" + prePos + "\t" +  "preNameTag=" +
                     preNameTag + "\t" + "curPos=" + curPos + "\t" + "nextPos=" +
-                    nextPos + "\t" + "firstCapital=" + curCapital + "\t" + "nextWord" + nextWord +"\t" + curNameTag ;
+                    nextPos + "\t" + "firstCapital=" + curCapital + "\t" + "nextWord=" + nextWord +"\t" +  "preWord=" + preWord +"\t" + curNameTag ;
         }
 
         if (extension.equals("pos-chunk")) {
             return curWord + "\t" + "prePos=" + prePos + "\t" + "preNameTag=" +
                     "@@" + "\t" + "curPos=" + curPos + "\t" + "nextPos=" + nextPos +
-                    "\t" + "firstCapital=" + curCapital + "\t" + "nextWord" + nextWord ;
+                    "\t" + "firstCapital=" + curCapital + "\t" + "nextWord=" + nextWord + "\t" +  "preWord=" + preWord ;
         }
         return  "";
     }
 
     static void setParameter(String extension) {
+        preWord = curWord;
         prePos = curPos;
         preChunk = curChunk;
         curWord = nextWord;
