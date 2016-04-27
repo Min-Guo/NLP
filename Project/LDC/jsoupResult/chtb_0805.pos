@@ -1,0 +1,39 @@
+中国_NR 各_DT 大_JJ 城市_NN 天气_NN 预报_NN
+新华社_NR 北京_NR 十二月_NT 三十日_NT 电_NN
+中央_NN 气象台_NN 今天_NT 下午_NT 发布_VV 以下_JJ 城市_NN 明日_NT 天气_NN 预报_NN ：_PU
+城市_NN （_PU 空_NN ）_PU 天气_NN 现象_NN （_PU 空_NN ）_PU 温度_NN （_PU 摄氏度_M ）_PU （_PU 空_NN ）_PU 风速_NN （_PU 级_M ）_PU
+北京_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 七_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 四_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+哈尔滨_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 二十五_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 负_JJ 十三_CD 度_M （_PU 空_NN ）_PU 三_CD 至_CC 四_CD
+长春_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 二十_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 负_JJ 十_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+沈阳_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 十五_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 负_JJ 二_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+天津_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 五_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 五_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+呼和浩特_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 十四_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 负_JJ 三_CD 度_M （_PU 空_NN ）_PU 四_CD 至_CC 五_CD
+乌鲁木齐_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 十二_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 负_JJ 六_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+银川_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 十一_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 二_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+西宁_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 十三_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 零_CD 度_M （_PU 空_NN ）_PU 四_CD 至_CC 五_CD
+兰州_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 九_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 三_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+西安_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 一_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 九_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+拉萨_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 八_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 七_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+成都_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 六_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十二_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+重庆_NR （_PU 空_NN ）_PU 阴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 七_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十一_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+贵阳_NR （_PU 空_NN ）_PU 阴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 七_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+昆明_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 八_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十六_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+太原_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 十一_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 六_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+石家庄_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 三_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 六_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+济南_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 三_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 六_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+郑州_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 负_JJ 三_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 八_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+合肥_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 零_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 七_CD 度_M （_PU 空_NN ）_PU 三_CD 至_CC 四_CD
+南京_NR （_PU 空_NN ）_PU 阴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 零_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 七_CD 度_M （_PU 空_NN ）_PU 三_CD 至_CC 四_CD
+上海_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 六_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+武汉_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 二_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+长沙_NR （_PU 空_NN ）_PU 小_JJ 雨_NN （_PU 空_NN ）_PU 最低_JJ 温度_NN 六_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+南昌_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 四_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十一_CD 度_M （_PU 空_NN ）_PU 三_CD 至_CC 四_CD
+杭州_NR （_PU 空_NN ）_PU 小_JJ 雨_NN （_PU 空_NN ）_PU 最低_JJ 温度_NN 五_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 八_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+福州_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 十二_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 十九_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+台北_NR （_PU 空_NN ）_PU 多云_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 十七_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 二十五_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+南宁_NR （_PU 空_NN ）_PU 阴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 十四_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 二十四_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+海口_NR （_PU 空_NN ）_PU 阴_NN （_PU 空_NN ）_PU 最低_JJ 温度_NN 十八_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 二十三_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+广州_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 十五_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 二十五_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+香港_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 十七_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 二十四_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+澳门_NR （_PU 空_NN ）_PU 晴_VA （_PU 空_NN ）_PU 最低_JJ 温度_NN 十七_CD 度_M （_PU 空_NN ）_PU 最高_JJ 温度_NN 二十四_CD 度_M （_PU 空_NN ）_PU 小于_VV 三_CD
+（_PU 完_VV ）_PU

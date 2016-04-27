@@ -21,6 +21,8 @@ public class NameTagger {
     static String nextNameTag;
     static String nextCapital;
     static String curCapital;
+    static String curWordCons;
+    static String nextWordCons;
 
     static void initalize(String extension) {
         preWord = "";
@@ -34,6 +36,9 @@ public class NameTagger {
         nextChunk = "";
         curCapital = "";
         nextCapital = "";
+        curWordCons = "";
+        nextWordCons = "";
+
         if (extension.equals("pos-chunk-name")) {
             preNameTag = "";
             curNameTag = "";
@@ -41,8 +46,6 @@ public class NameTagger {
         }
         if (extension.equals("pos-chunk")) {
             preNameTag = "@@";
-//            curNameTag = "@@";
-//            nextNameTag = "@@";
         }
     }
 
@@ -59,13 +62,15 @@ public class NameTagger {
         if (extension.equals("pos-chunk-name")) {
             return curWord + "\t" + "prePos=" + prePos + "\t" +  "preNameTag=" +
                     preNameTag + "\t" + "curPos=" + curPos + "\t" + "nextPos=" +
-                    nextPos + "\t" + "firstCapital=" + curCapital + "\t" + "nextWord=" + nextWord +"\t" +  "preWord=" + preWord +"\t" + curNameTag ;
+                    nextPos + "\t" + "firstCapital=" + curCapital + "\t" + "nextWord=" + nextWord +"\t" +  "preWord=" +
+                    preWord +"\t" + "curWordCons=" + curWordCons + "\t"+ curNameTag ;
         }
 
         if (extension.equals("pos-chunk")) {
             return curWord + "\t" + "prePos=" + prePos + "\t" + "preNameTag=" +
                     "@@" + "\t" + "curPos=" + curPos + "\t" + "nextPos=" + nextPos +
-                    "\t" + "firstCapital=" + curCapital + "\t" + "nextWord=" + nextWord + "\t" +  "preWord=" + preWord ;
+                    "\t" + "firstCapital=" + curCapital + "\t" + "nextWord=" + nextWord + "\t" +  "preWord=" + preWord + "\t"
+                    + "curWordCons=" + curWordCons ;
         }
         return  "";
     }
@@ -78,6 +83,9 @@ public class NameTagger {
         curPos = nextPos;
         curChunk = nextChunk;
         curCapital = nextCapital;
+        curWordCons = nextWordCons;
+        nextWordCons ="";
+
         if (extension.equals("pos-chunk-name")) {
             preNameTag = curNameTag;
             curNameTag = nextNameTag;
@@ -97,6 +105,38 @@ public class NameTagger {
             curCapital = "Y";
         } else {
             curCapital = "N";
+        }
+    }
+
+    static void checkCurWordConstruct(String word) {
+        for (int i = 0; i < word.length(); i++) {
+            if(Character.isLetter(word.charAt(i))) {
+                if (Character.isUpperCase(word.charAt(i))) {
+                    curWordCons += "L";
+                } else {
+                    curWordCons += "l";
+                }
+            } else if (Character.isDigit(word.charAt(i))) {
+                curWordCons += "N";
+            } else {
+                curWordCons +=  word.charAt(i);
+            }
+        }
+    }
+
+    static void checkNextWordConstruct(String word) {
+        for (int i = 0; i < word.length(); i++) {
+            if(Character.isLetter(word.charAt(i))) {
+                if (Character.isUpperCase(word.charAt(i))) {
+                    nextWordCons += "L";
+                } else {
+                    nextWordCons += "l";
+                }
+            } else if (Character.isDigit(word.charAt(i))) {
+                nextWordCons += "N";
+            } else {
+                nextWordCons +=  word.charAt(i);
+            }
         }
     }
 
@@ -126,6 +166,7 @@ public class NameTagger {
 //                    prePos = "Start";
                     String[] curLineSplit = line.split("\t");
                     curWord = curLineSplit[0];
+                    checkCurWordConstruct(curWord);
                     checkcurCapital(curWord);
                     curPos = curLineSplit[1];
                     curChunk = curLineSplit[2];
@@ -137,6 +178,7 @@ public class NameTagger {
                         if (line.length() != 0) {
                             String[] nextLineSpilt = line.split("\t");
                             nextWord = nextLineSpilt[0];
+                            checkNextWordConstruct(nextWord);
                             checknextCapital(nextWord);
                             nextPos = nextLineSpilt[1];
                             nextChunk = nextLineSpilt[2];
@@ -146,6 +188,7 @@ public class NameTagger {
                         }
                         String outPutString = outPutLine(extension);
                         bw.write(outPutString);
+                        curWordCons ="";
                         bw.newLine();
                         if (line.length() == 0) {
                             bw.write(line);
@@ -161,6 +204,7 @@ public class NameTagger {
                 } else {
                     String[] nextLineSplit = line.split("\t");
                     nextWord = nextLineSplit[0];
+                    checkNextWordConstruct(nextWord);
                     checknextCapital(nextWord);
                     nextPos = nextLineSplit[1];
                     nextChunk = nextLineSplit[2];

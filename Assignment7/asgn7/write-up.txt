@@ -1,0 +1,43 @@
+PERSON—-nsubj-1:work:prep_in—-GPE	RESIDE
+
+Geologist Piotr Stanczak, 42, was working in Pakistan for a Polish oil and
+natural gas exploration company when he was seized in the volatile northwest of
+the country last September.
+
+
+
+PERSON--dobj-1:sentence:xcomp:hang:prep_in:province:poss--GPE	RESIDE
+
+Asia Bibi was sentenced to hang in Pakistan's central province of Punjab earlier
+this month after being found guilty of insulting the Prophet Mohammed.
+
+
+PERSON—appos:director:prep_in:city:prep_of—GPE	RESIDE
+
+A verdict on the case of Wen Qiang, former justice department director in the
+southwestern city of Chongqing, would be announced at an undisclosed, later
+date, the No. 5 Intermediate People's Court said in a statement.
+
+
+
+
+PERSON--nsubj-1:make:dobj:trip:prep_for:talk:prep_in--GPE	RESIDE
+
+Senate Banking Committee chairman Christopher Dodd made the trip for talks with
+officials in Havana on how to improve relations between the former Cold War
+foes, his office said.
+
+
+
+PERSON--nsubj-1:be:cop:critic:prep_of:embargo:nn--GPE	RESIDE
+
+Dodd, who also chairs the Senate Foreign Relations subcommittee on the Western
+Hemisphere, has been a frequent vocal critic of the US trade embargo on Cuba.
+
+
+
+PERSON--nn-1:assouw:partmod:arrive:advmod:home:prep_in--GPE	RESIDE
+
+The sole survivor from the disaster, nine-year-old Ruben van Assouw, arrived
+back home in the Netherlands three days after the crash that killed his parents
+and brother.

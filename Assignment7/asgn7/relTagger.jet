@@ -1,0 +1,30 @@
+# JET properties file to run ACE with dependency parser and
+# dependency-path-based relation tagger
+# Jet.batch                = t
+JetTest.fileName1        = ./my_test_file.txt
+# JetTest.fileName1      = ./small-test
+Jet.dataPath             = data
+EnglishLex.fileName1     = Jet4.dict
+EnglishLex.fileName2     = titles.dict
+Gazetteer.fileName       = loc.dict
+NameGender.fileName      = gender.dict
+DepParser.model.fileName         = parseModel.gz
+DepParser.transformations        = t
+Time.fileName            = time_rules.yaml
+Ace.EDTtype.fileName     = ../acedata/EDT type dict 05.txt
+Ace.generic.fileName     = ../acedata/generic dict 05.txt
+Ace.NameSubtypeModel.fileName     = ../acedata/ACEnameSubtypeModel 05.txt
+Ace.Value.fileName       = ../acedata/values.dict
+Tags.fileName            = pos_hmm.txt
+Pattern.fileName1        = MEchunkPatterns.txt
+Pattern.fileName2	 = NPpatterns.txt
+Chunker.fileName         = chunkModel.txt
+NameTags.ME.fileName       = ../acedata/Ace05meneModel
+#
+Ace.RelationDepPaths.fileName = ./patterns
+#
+processDocument      = tag(TEXT), TEXT:processTextZone, ace, writeRelationTriples
+processTextZone      = sentenceSplit, sentence:processSentence
+processSentence      = tokenize, lexLookup, pruneTags, tagNames, chunk, \
+                       pat(names), pat(othernames), ng:processNG, depParse, resolve
+processNG            = pat(ng-chunks)
